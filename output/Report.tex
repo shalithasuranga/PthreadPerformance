@@ -70,7 +70,7 @@
 	\section{CPU Pthread Program runtime}
 
 	\par
-	This program is executed in CPU using threads and $x,y$ values are extracted from the average runtime of each different threads count.
+	This program is executed in CPU using \textbf{POSIX threads} and $x,y$ values are extracted from the average runtime of each different threads count.
 	\hfill \break
 
 	\begin{tikzpicture}
@@ -80,15 +80,16 @@
 		\end{axis}
 	\end{tikzpicture}
 
-	\newpage
-
 	\begin{itemize}
 
-		\item There is good performance gain when the program is using multiple threads rather than one.
+		\item There is good performance gain when the program is using multiple threads rather than single thread.
+
+		\item When the threads amount is exceeding the actual parallel thread size of the CPU runtime plot has random peaks and wells.
 
 
 	\end{itemize}
 
+	\newpage
 
 
 	\section{References}
