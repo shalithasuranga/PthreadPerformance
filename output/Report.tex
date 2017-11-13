@@ -1,0 +1,106 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{tikz}
+\usepackage{datetime}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{tabu}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{geometry}
+\pgfplotsset{compat=1.11}
+
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+
+\font\titlefont=cmr12 at 40pt
+\font\metafont=cmr12 at 14pt
+
+\title{\titlefont{Pthread Matrix Multiplication Runtime}}
+\author{M.A.S SURANGA (CST140043)}
+\date{}
+
+\begin{document}
+
+	\maketitle
+
+	\vspace*{5\baselineskip} 
+	\begin{center}
+	\metafont{Generated on \today \ \currenttime}
+	\end{center}
+
+	\newpage
+	\setlength{\cftbeforesecskip}{6pt}
+	\tableofcontents
+
+	\newpage
+	\section{Introduction}
+	\hfill \break
+
+	\textbf{Report Content}
+
+	\hfill \break
+
+	This report contains performance graph for matrix multiplication using pthreads. Runtime is measured for several thread amounts by keeping matrix size as fixed.  
+
+	\hfill \break
+
+	\textbf{Testcases Details}
+
+	\hfill \break
+
+
+	\begin{tabu} to 1 \textwidth { | X[l] | X[r] | }
+		 \hline
+		 No. of Threads & \input{meta_threads.dat}  \\
+		 \hline
+		 No. of iterations & \input{meta_avg.dat}  \\
+		 \hline
+		 Fixed Matrix Size & \input{meta_fixedmatrix.dat}  \\
+		 \hline
+	\end{tabu}	
+	
+
+	\newpage
+
+	\section{CPU Pthread Program runtime}
+
+	\par
+	This program is executed in CPU using threads and $x,y$ values are extracted from the average runtime of each different threads count.
+	\hfill \break
+
+	\begin{tikzpicture}
+		\begin{axis}[grid=major, grid style={black!20}, width=\linewidth, xlabel=No. of Threads,ylabel=Runtime(secs.),legend style={at={(0,-0.3)},anchor=south}, ylabel near ticks]
+			\addplot[color=red,mark=x] table[ignore chars={(,)},col sep=comma] {datafile0.dat};
+			\addlegendentry{$PThreads CPU$}
+		\end{axis}
+	\end{tikzpicture}
+
+	\newpage
+
+	\begin{itemize}
+
+		\item There is good performance gain when the program is using multiple threads rather than one.
+
+
+	\end{itemize}
+
+
+
+	\section{References}
+
+	\begin{itemize}
+	  \item https://www.tug.org/twg/mactex/tutorials/ltxprimer-1.0.pdf.
+	  \item https://gist.github.com/LeCoupa/122b12050f5fb267e75f
+	  \item https://tex.stackexchange.com/questions
+	  \item https://computing.llnl.gov/tutorials/pthreads
+	  \item https://randu.org/tutorials/threads
+	\end{itemize}
+
+\end{document}
+
+\grid
