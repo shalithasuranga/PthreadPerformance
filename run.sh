@@ -7,7 +7,7 @@
 
 # ---------- Configuration ---------------------
 THREADS=( 1 2 4 8 16 )
-AVG_TIMES=30
+AVG_TIMES=10
 FIXED_MATRIX=512
 
 
@@ -58,7 +58,7 @@ do
 
 		TIMES=($(seq 0 $AVG_TIMES))
 		total="0"
-		echo "N=$i"
+		echo "THREADS=$i"
 		for j in "${TIMES[@]}"
 		do 
 			:
